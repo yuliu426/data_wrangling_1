@@ -75,3 +75,11 @@ litters_readr
 ```
 
 
+##Exporting data
+
+Export the mlb sun_table.
+
+```{r}
+write_csv(mlb_df, './data/mlb_subtable.csv')
+```
+
