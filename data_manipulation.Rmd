@@ -15,3 +15,66 @@ litters_df = read_csv('./data/FAS_litters.csv')
 litters_df = janitor::clean_names(litters_df)
 ```
 
+## `selcet`
+Choose some columns and not others
+
+```{r}
+select(litters_df, group, gd0_weight:gd_of_birth)
+```
+
+```{r}
+select(litters_df, -litter_number)
+```
+
+Renaming columns...
+```{r}
+select(litters_df, GROUP = group, LitterNumber = litter_number)
+```
+
+```{r}
+rename(litters_df, GROUP = group, LitterNumber = litter_number)
+```
+
+Select helers
+
+```{r}
+select(litters_df, starts_with('gd'))
+```
+
+```{r}
+select(litters_df, litter_number, everything())  #move''litter_number' to the begining and keep everything else
+```
+
+```{r}
+relocate(litters_df, litter_number) #relocate the litter_number to the begining
+```
+
+##filter
+```{r}
+filter(litters_df, gd0_weight  < 22)
+```
+
+```{r}
+filter(litters_df, gd0_weight  >= 22)
+```
+
+```{r}
+filter(litters_df, gd_of_birth == 20)
+```
+
+```{r}
+filter(litters_df, gd_of_birth != 20)
+```
+
+```{r}
+filter(litters_df, gd0_weight >= 20, gd_of_birth == 20)
+
+```
+
+```{r}
+filter(litters_df, group == 'Mod8')
+```
+
+```{r}
+filter(litters_df, group %in% c('Con7', 'Mod8')) #group is equal to either Con7 or Mod8
+```
